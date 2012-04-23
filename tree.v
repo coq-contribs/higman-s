@@ -9,16 +9,16 @@
 Set Implicit Arguments.
 Require Export Arith.
 Require Export List.
-
+  
 Section Wrap.
+
+    Unset Elimination Schemes.
 
     Variable A : Set.
     Variable leA : A -> A -> Prop.
 
     Inductive tree : Set := 
       | node : A -> list tree -> tree.
-
-    Reset tree_rect.
 
 Section definitions.
 
@@ -76,6 +76,8 @@ Section tree_rect.
 
 End tree_rect.
 
+Set Elimination Schemes.
+			    
 Inductive lforall (P : tree -> Type) : list tree -> Type :=
 | lforall_nil : lforall P nil
 | lforall_cons : forall a l, lforall P l -> P a -> lforall P (a::l).
