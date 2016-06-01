@@ -242,7 +242,9 @@ intros bs acc_bs; induction acc_bs as [bs acc_bs IHbs].
 intros f acc_f; induction acc_f as [f acc_f IHf].
 intros ws H; elim H; clear H; intros H1 H2 H3.
 constructor; intros ws' Hws'.
+Unset Regular Subst Tactic.
 inversion Hws'; subst.
+Set Regular Subst Tactic.
 induction a as [| a w IHw].
 (* case nil *)
 constructor; intros y Hy; inversion Hy; subst.
